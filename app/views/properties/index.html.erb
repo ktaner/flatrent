@@ -1,0 +1,19 @@
+<h1>All Properties</h1>
+
+<% @properties.each_slice(2) do |properties| %>
+  <div class="row">
+
+
+    <% properties.each do |property| %>
+      <div class="col-xs-12  col-md-6">
+        <div class="property-box">
+          <h2><%= property.headline %></h2>
+          <div>
+            <%= number_to_currency(property.price) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>

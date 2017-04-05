@@ -1,1 +1,18 @@
-<%= @property.inspect %>
+
+
+<h1><%= @property.headline %></h1>
+
+<div>
+  <%=simple_format(@property.description) %>
+</div>
+
+<h2>Address</h2>
+
+<div>
+  <%= simple_format(@property.address) %>
+</div>
+
+<div>
+  <b>Price:</b> <%= number_to_currency(@property.price) %></b>
+</div>
+<hr>

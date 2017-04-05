@@ -28,6 +28,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
+    @properties = Property.all
   end
 
   def destroy
