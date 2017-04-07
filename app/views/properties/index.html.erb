@@ -7,7 +7,7 @@
     <% properties.each do |property| %>
       <div class="col-xs-12  col-md-6">
         <div class="property-box">
-          <h2><%= property.headline %></h2>
+          <h2><%= link_to(property.headline, property, class: "text-muted") %></h2>
           <div>
             <%= number_to_currency(property.price) %>
           </div>
