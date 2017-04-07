@@ -15,4 +15,18 @@
 <div>
   <b>Price:</b> <%= number_to_currency(@property.price) %></b>
 </div>
-<hr>
+
+<%= form_for(@booking) do |f| %>
+  <div class="form-group">
+    <%= f.label(:begin, "Book from", :class => "control-label")%>
+    <%= f.date_field(:begin, :class => "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label(:end, "Book until", :class => "control-label")%>
+    <%= f.date_field(:end, :class => "form-control") %>
+  </div>
+
+  <%= f.submit("Add property", :class => "btn btn-default btn-primary") %>
+
+<% end %>
