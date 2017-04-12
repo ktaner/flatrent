@@ -1,20 +1,33 @@
 
+<div class="col-xs-12  col-md-9">
+  <h1><%= @property.headline %></h1>
 
-<h1><%= @property.headline %></h1>
+  <div>
+    <%=simple_format(@property.description) %>
+  </div>
 
-<div>
-  <%=simple_format(@property.description) %>
+  <h2>Address</h2>
+
+  <div>
+    <%= simple_format(@property.address) %>
+  </div>
+
+  <div>
+    <b>Price:</b> <%= number_to_currency(@property.price) %></b>
+  </div>
 </div>
 
-<h2>Address</h2>
 
-<div>
-  <%= simple_format(@property.address) %>
-</div>
 
-<div>
-  <b>Price:</b> <%= number_to_currency(@property.price) %></b>
-</div>
+<div class="col-xs-12 col-md-3">
+  
+<ul>
+  <% @booking.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+  <% end %>
+</ul>
+
+
 
 <%= form_for(@booking) do |f| %>
   <div class="form-group">
@@ -27,6 +40,9 @@
     <%= f.date_field(:end, :class => "form-control") %>
   </div>
 
-  <%= f.submit("Add property", :class => "btn btn-default btn-primary") %>
+  <%= f.hidden_field(:property_id, :value => @property.id) %>
+
+  <%= f.submit("Book", :class => "btn btn-default btn-primary") %>
 
 <% end %>
+</div>
