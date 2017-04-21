@@ -20,7 +20,7 @@
 
 
 <div class="col-xs-12 col-md-3">
-  
+
 <ul>
   <% @booking.errors.full_messages.each do |message| %>
     <li> <%= message %> </li>
@@ -28,21 +28,23 @@
 </ul>
 
 
+<% if current_user %>
+  <%= form_for(@booking) do |f| %>
+    <div class="form-group">
+      <%= f.label(:begin, "Book from", :class => "control-label")%>
+      <%= f.date_field(:begin, :class => "form-control") %>
+    </div>
 
-<%= form_for(@booking) do |f| %>
-  <div class="form-group">
-    <%= f.label(:begin, "Book from", :class => "control-label")%>
-    <%= f.date_field(:begin, :class => "form-control") %>
-  </div>
+    <div class="form-group">
+      <%= f.label(:end, "Book until", :class => "control-label")%>
+      <%= f.date_field(:end, :class => "form-control") %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label(:end, "Book until", :class => "control-label")%>
-    <%= f.date_field(:end, :class => "form-control") %>
-  </div>
+    <%= f.hidden_field(:property_id, :value => @property.id) %>
 
-  <%= f.hidden_field(:property_id, :value => @property.id) %>
-
-  <%= f.submit("Book", :class => "btn btn-default btn-primary") %>
-
+    <%= f.submit("Book", :class => "btn btn-default btn-primary") %>
+  <% end %>
+  <% else %>
+    <%= link_to("Log in to book", new_user_session_path, :class => "btn btn-primary") %>
 <% end %>
 </div>

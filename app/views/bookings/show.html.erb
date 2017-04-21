@@ -1,2 +1,32 @@
 <h1>Your booking</h1>
-<%= @booking.inspect %>
+<div>
+  <p>
+    Thanks for booking with FlatRent! Here are your booking details:
+  </p>
+  <p>
+    <b>From:</b> <%= @booking.begin.strftime("%B %e, %Y")%> <br>
+    <b>To:</b> <%= @booking.end.strftime("%B %e, %Y")%> <br>
+  </p>
+
+  <h2><%= @booking.property.headline %></h2>
+
+  <div>
+    <%=simple_format(@booking.property.description) %>
+  </div>
+
+  <h2>Address</h2>
+
+  <div>
+    <%= simple_format(@booking.property.address) %>
+  </div>
+
+  <div>
+    <b>Price:</b> <%= number_to_currency(@booking.property.price) %></b>
+
+  <br>
+
+  <b>Total:</b>
+  <%= number_to_currency(@booking.total_price) %></b>
+  </div>
+
+</div>

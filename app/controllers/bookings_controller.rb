@@ -12,6 +12,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    if @booking.user != current_user
+      flash[:notice] = "Please log in to see this booking"
+      redirect_to new_user_session_path
+    end
+  end
+
   private
 
     def booking_params
