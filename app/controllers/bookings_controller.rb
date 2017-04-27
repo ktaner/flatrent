@@ -20,6 +20,9 @@ class BookingsController < ApplicationController
     end
   end
 
+  def index
+    current_user.properties.map {|property| property.booking}
+
   private
 
     def booking_params

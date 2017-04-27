@@ -38,11 +38,10 @@ class PropertiesController < ApplicationController
 private
 
   def property_params
-    params.require(:property).permit(
-                :headline,
-                :description,
-                :address,
-                :price)
+    params
+      .require(:property)
+      .permit(:headline, :description, :address, :price)
+      .merge(:user => current_user)
   end
 
 
